@@ -17,7 +17,7 @@ export default function AntelopesChart({ antelopes }: Props) {
 
   const pieData = useMemo(
     () => getPieData(dataToCompare, antelopes),
-    [dataToCompare]
+    [dataToCompare, antelopes]
   );
   return (
     <div className="antelopes-chart-container">

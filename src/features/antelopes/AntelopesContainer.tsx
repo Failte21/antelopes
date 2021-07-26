@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Dimmer, Loader } from "semantic-ui-react";
+import { Dimmer, Loader, Tab } from "semantic-ui-react";
 
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { antelopesThunkActions, selectAntelopes } from "./antelopesSlice";
@@ -14,6 +14,25 @@ export default function AntelopesContainer() {
     dispatch(antelopesThunkActions.fetch());
   }, [dispatch]);
 
+  const panes = [
+    {
+      menuItem: "Table",
+      render: () => (
+        <Tab.Pane>
+          <AntelopesTable antelopes={antelopes} />
+        </Tab.Pane>
+      ),
+    },
+    {
+      menuItem: "Charts",
+      render: () => (
+        <Tab.Pane>
+          <AntelopesChart antelopes={antelopes} />
+        </Tab.Pane>
+      ),
+    },
+  ];
+
   return (
     <div>
       {status === "loading" ? (
@@ -22,8 +41,7 @@ export default function AntelopesContainer() {
         </Dimmer>
       ) : (
         <React.Fragment>
-          <AntelopesTable antelopes={antelopes} />
-          <AntelopesChart antelopes={antelopes} />
+          <Tab panes={panes} />
         </React.Fragment>
       )}
     </div>
