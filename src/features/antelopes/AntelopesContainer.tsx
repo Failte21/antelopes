@@ -3,6 +3,7 @@ import { Dimmer, Loader } from "semantic-ui-react";
 
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { antelopesThunkActions, selectAntelopes } from "./antelopesSlice";
+import AntelopesChart from "./components/AntelopesChart/AntelopesChart";
 import AntelopesTable from "./components/AntelopesTable/AntelopesTable";
 
 export default function AntelopesContainer() {
@@ -20,7 +21,10 @@ export default function AntelopesContainer() {
           <Loader />
         </Dimmer>
       ) : (
-        <AntelopesTable antelopes={antelopes} />
+        <React.Fragment>
+          <AntelopesTable antelopes={antelopes} />
+          <AntelopesChart antelopes={antelopes} />
+        </React.Fragment>
       )}
     </div>
   );

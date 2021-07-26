@@ -1,0 +1,12 @@
+.antelopes-chart-container {
+  max-width: 960px;
+  margin: auto;
+}
+
+.antelopes-chart {
+  margin: auto;
+}
+
+.chart-data-info {
+  text-transform: capitalize;
+}
